@@ -1,0 +1,11 @@
+%h1= "Welcome to #{@settings.name}, #{@user.name}"
+
+%p
+  = "You have successfully signed up to #{@settings.name}, your username is: #{@user.email}."
+  %br/
+
+%p
+  To confirm your account, please follow this link:
+  = link_to @confirmation_url, @confirmation_url
+
+%p Thanks for joining and have a great day!
