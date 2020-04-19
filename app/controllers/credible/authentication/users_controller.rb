@@ -21,7 +21,7 @@ class Credible::Authentication::UsersController < Credible::AuthenticationContro
     authorize @user
 
     if @user.save
-      Credible::UserMailer.with(user: @user).confirmation_email.deliver_later
+      Credible::ConfirmationMailer.with(user: @user).confirmation_email.deliver_later
       @session = ::Session.create(user: @user)
       render :show, status: :created, location: @user
     else
@@ -54,7 +54,7 @@ class Credible::Authentication::UsersController < Credible::AuthenticationContro
     @user.reset_password
 
     if @user.save
-      Credible::UserMailer.with(user: @user).confirmation_email.deliver_later
+      Credible::ResetPasswordMailer.with(user: @user).reset_password_email.deliver_later
       render :show, status: :ok, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
