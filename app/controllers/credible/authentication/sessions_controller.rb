@@ -15,14 +15,14 @@ class Credible::Authentication::SessionsController < Credible::AuthenticationCon
 
   # GET /sessions/new
   def new
-    @session = Session.new
+    @session = ::Session.new
     authorize @session
   end
 
   # POST /sessions
   # POST /sessions.json
   def create
-    @session = Session.authenticate(permitted_attributes(Session))
+    @session = ::Session.authenticate(permitted_attributes(Session))
     authorize @session
 
     if @session.save

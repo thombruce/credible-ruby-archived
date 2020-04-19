@@ -30,7 +30,7 @@ Warden::Strategies.add(:jwt) do
       fail!('Could not authenticate')
     end
 
-    session = Session.find(token[0]['data']['session_id'])
+    session = ::Session.find(token[0]['data']['session_id'])
 
     session ? success!(session) : fail!('Could not authenticate')
   end
@@ -50,7 +50,7 @@ Warden::Strategies.add(:api_token) do
   end
 
   def authenticate!
-    session = Session.find_by(token: env['HTTP_API_TOKEN'])
+    session = ::Session.find_by(token: env['HTTP_API_TOKEN'])
     session ? success!(session) : fail!('Could not authenticate')
   end
 

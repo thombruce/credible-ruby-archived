@@ -10,19 +10,19 @@ class Credible::Authentication::UsersController < Credible::AuthenticationContro
 
   # GET /users/new
   def new
-    @user = User.new
+    @user = ::User.new
     authorize @user
   end
 
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(permitted_attributes(User))
+    @user = ::User.new(permitted_attributes(User))
     authorize @user
 
     if @user.save
       Credible::UserMailer.with(user: @user).confirmation_email.deliver_later
-      @session = Session.create(user: @user)
+      @session = ::Session.create(user: @user)
       render :show, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -32,13 +32,13 @@ class Credible::Authentication::UsersController < Credible::AuthenticationContro
   # GET /users/confirm/:confirmation_token
   # GET /users/confirm/:confirmation_token.json
   def confirm
-    @user = User.find_by(confirmation_token: params[:confirmation_token])
+    @user = ::User.find_by(confirmation_token: params[:confirmation_token])
     authorize @user
 
     @user.confirm
 
     if @user.save
-      @session = current_user ? current_session : Session.create(user: @user)
+      @session = current_user ? current_session : ::Session.create(user: @user)
       render :show, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -48,7 +48,7 @@ class Credible::Authentication::UsersController < Credible::AuthenticationContro
   # POST /users/reset_password
   # POST /users/reset_password.json
   def reset_password
-    @user = User.find_by(email: permitted_attributes(User)[:email])
+    @user = ::User.find_by(email: permitted_attributes(User)[:email])
     authorize @user
 
     @user.reset_password
