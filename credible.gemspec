@@ -9,10 +9,11 @@ Gem::Specification.new do |spec|
   spec.version     = Credible::VERSION
   spec.authors     = ["Thom Bruce"]
   spec.email       = ["thom@thombruce.com"]
-  spec.homepage    = "https://thombruce.com/"
+  spec.homepage    = "https://github.com/thombruce/credible"
   spec.summary     = "Rails token auth"
   spec.description = "Provides token-based authentication for Rails API apps."
   spec.license     = "MIT"
+  spec.metadata    = { "source_code_uri" => "https://github.com/example/example" }
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
@@ -21,5 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "pundit", "~> 2.1.0"
 
   spec.add_development_dependency "pg"
-  spec.add_development_dependency "rspec", "~> 4.0.0.beta3"
+  spec.add_development_dependency "rspec", "~> 3.9.0"
 end
