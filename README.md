@@ -70,6 +70,14 @@ class Session < ApplicationRecord
 end
 ```
 
+## Mailers
+
+To user Credible's in-built mailers, you must set a hostname for your application. A suitable setting for this in `config/environments/development.rb` might be:
+
+```ruby
+config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+```
+
 ## Contributing
 
 Credible is not yet accepting contributions. Watch this space.
