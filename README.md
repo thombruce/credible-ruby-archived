@@ -5,6 +5,9 @@
 [![Gem](https://img.shields.io/gem/v/credible?logo=rubygems)](https://rubygems.org/gems/credible)
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](MIT-LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+[![Contributing](https://img.shields.io/badge/contributions-welcome-blue.svg)](CONTRIBUTING.md)
+[![Discord](https://img.shields.io/discord/697123984231366716?color=7289da&label=chat&logo=discord)](https://discord.gg/YMU87db)
 
 Credible was extracted from [thombruce/helvellyn](https://github.com/thombruce/helvellyn) and is still a work in progress. The goal is to provide JWT and API token based authentication using [Warden](https://github.com/wardencommunity/warden/) for Rails API applications.
 
