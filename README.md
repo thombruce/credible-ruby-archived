@@ -69,7 +69,7 @@ class User < ApplicationRecord
 end
 ```
 
-### Session
+### Session model
 
 ```bash
 rails g model Session user:references token:token
