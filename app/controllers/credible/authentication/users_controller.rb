@@ -32,10 +32,10 @@ class Credible::Authentication::UsersController < Credible::AuthenticationContro
   # GET /users/confirm/:confirmation_token
   # GET /users/confirm/:confirmation_token.json
   def confirm
-    @user = ::User.find_by(confirmation_token: params[:confirmation_token])
+    @user = ::User.find_by(email: params[:email])
     authorize @user
 
-    @user.confirm
+    @user.confirm(params[:confirmation_token])
 
     if @user.save
       @session = current_user ? current_session : ::Session.create(user: @user)

@@ -20,10 +20,12 @@ module Credible
       validates_confirmation_of :password, allow_blank: true
       # End custom password validation
 
-      def confirm
-        self.confirmation_token = nil
-        self.password = SecureRandom.hex(8) unless password_digest.present?
-        self.confirmed_at = Time.now.utc
+      def confirm(token = nil)
+        if ActiveSupport::SecurityUtils.secure_compare(token, confirmation_token)
+          self.confirmation_token = nil
+          self.password = SecureRandom.hex(8) unless password_digest.present?
+          self.confirmed_at = Time.now.utc
+        end
       end
 
       def confirmed?
