@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary     = "Rails token auth"
   spec.description = "Provides token-based authentication for Rails API apps."
   spec.license     = "MIT"
-  spec.metadata    = { "source_code_uri" => "https://github.com/example/example" }
+  spec.metadata    = { "source_code_uri" => "https://github.com/thombruce/credible" }
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
