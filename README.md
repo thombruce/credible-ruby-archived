@@ -15,6 +15,14 @@ And then execute:
 $ bundle
 ```
 
+Mount Credible's authentication routes in your `config/routes.rb` file:
+
+```ruby
+Rails.application.routes.draw do
+  mount Credible::Engine => "/auth"
+end
+```
+
 Credible is a work in progress and requires a complicated setup for now. It was extracted from [thombruce/helvellyn](https://github.com/thombruce/helvellyn). You'll need to add models and configure them manually. In future, I'll had helpers to handle this for you.
 
 ## Add Models
