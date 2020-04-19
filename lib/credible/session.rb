@@ -12,7 +12,7 @@ module Credible
       def jwt
         payload = {
           data: jwt_data,
-          iss: 'Helvellyn'
+          iss: Rails.application.class.module_parent_name
         }
         JWT.encode payload, Rails.application.secrets.secret_key_base, 'HS256' # [1]
       end

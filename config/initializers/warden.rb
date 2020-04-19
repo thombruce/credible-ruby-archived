@@ -25,7 +25,7 @@ Warden::Strategies.add(:jwt) do
       jwt = header.gsub(pattern, '') if header && header.match(pattern)
       token =
         JWT.decode jwt, Rails.application.secrets.secret_key_base, true,
-                   iss: 'Helvellyn', verify_iss: true, algorithm: 'HS256' # [1]
+                   iss: Rails.application.class.module_parent_name, verify_iss: true, algorithm: 'HS256' # [1]
     rescue JWT::InvalidIssuerError
       fail!('Could not authenticate')
     end

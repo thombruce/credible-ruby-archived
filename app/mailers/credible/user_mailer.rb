@@ -9,13 +9,13 @@ class Credible::UserMailer < Credible::ApplicationMailer
     @user = params[:user]
     @url  = root_url(host: @settings.hostname)
     @confirmation_url = @url + 'confirm/' + @user.confirmation_token
-    mail(from: @settings.email, to: @user.email, subject: "Welcome to #{@settings.name} | Please confirm your account")
+    mail(from: @settings.email, to: @user.email, subject: "Welcome to #{Rails.application.class.module_parent_name} | Please confirm your account")
   end
 
   def invitation_email
     @settings = Settings.instance
     @user = params[:user]
     @url  = root_url(host: @settings.hostname)
-    mail(from: @settings.email, to: @user.email, subject: "You have been invited to #{@settings.name}")
+    mail(from: @settings.email, to: @user.email, subject: "You have been invited to #{Rails.application.class.module_parent_name}")
   end
 end
