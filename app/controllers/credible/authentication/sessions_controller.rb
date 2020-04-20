@@ -1,7 +1,8 @@
 class Credible::Authentication::SessionsController < Credible::AuthenticationController
   before_action :set_session, only: [:show, :destroy]
 
-  skip_before_action :authenticate!, only: [:new, :create]
+  skip_before_action :authenticate!, only: [:new, :create, :fail]
+  skip_after_action :verify_authorized, only: [:fail]
 
   # GET /sessions
   # GET /sessions.json
@@ -40,6 +41,10 @@ class Credible::Authentication::SessionsController < Credible::AuthenticationCon
     warden.logout
     @session.destroy
     head :no_content
+  end
+
+  def fail
+    render json: {}, status: :unauthorized
   end
 
   private
