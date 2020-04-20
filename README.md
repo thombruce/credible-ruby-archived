@@ -3,6 +3,9 @@
 [![Become a Patron](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/thombruce)
 
 [![Gem](https://img.shields.io/gem/v/credible?logo=rubygems)](https://rubygems.org/gems/credible)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thombruce/credible/CI?logo=github)](https://github.com/thombruce/credible/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/thombruce/credible?logo=codecov)](https://codecov.io/gh/thombruce/credible)
+[![GitHub issues](https://img.shields.io/github/issues-raw/thombruce/credible?logo=github)](https://github.com/thombruce/credible/issues)
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](MIT-LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
