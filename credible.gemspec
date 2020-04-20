@@ -23,4 +23,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "pg"
   spec.add_development_dependency "rspec-rails", "~> 4.0.0.beta3"
+  spec.add_development_dependency "simplecov", "~> 0.17.1"
+  spec.add_development_dependency "codecov"
 end
