@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use Warden::Manager do |config|
-  config.failure_app = ->(env) { SessionsController.action(:new).call(env) } # TODO: Fix me.
+  config.failure_app = ->(env) { Credible::Authentication::SessionsController.action(:fail).call(env) }
 
   config.default_scope = :session
 
@@ -31,8 +31,9 @@ Warden::Strategies.add(:jwt) do
     end
 
     session = ::Session.find(token[0]['data']['session_id'])
-
-    session ? success!(session) : fail!('Could not authenticate')
+    success!(session)
+  rescue ActiveRecord::RecordNotFound
+    fail!('Could not authenticate')
   end
 
   def store?
@@ -50,8 +51,10 @@ Warden::Strategies.add(:api_token) do
   end
 
   def authenticate!
-    session = ::Session.find_by(token: env['HTTP_API_TOKEN'])
-    session ? success!(session) : fail!('Could not authenticate')
+    session = ::Session.find_by!(token: env['HTTP_API_TOKEN'])
+    success!(session)
+  rescue ActiveRecord::RecordNotFound
+    fail!('Could not authenticate')
   end
 
   def store?
