@@ -3,6 +3,8 @@ class Credible::Authentication::UsersController < Credible::AuthenticationContro
 
   skip_before_action :authenticate!, only: [:new, :create, :confirm]
 
+  # TODO: Reevaluate authorization without Pundit
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -11,14 +13,12 @@ class Credible::Authentication::UsersController < Credible::AuthenticationContro
   # GET /users/new
   def new
     @user = ::User.new
-    authorize @user
   end
 
   # POST /users
   # POST /users.json
   def create
-    @user = ::User.new(permitted_attributes(User))
-    authorize @user
+    @user = ::User.new(user_params)
 
     if @user.save
       Credible::ConfirmationMailer.with(user: @user).confirmation_email.deliver_later
@@ -33,7 +33,6 @@ class Credible::Authentication::UsersController < Credible::AuthenticationContro
   # GET /users/confirm/:confirmation_token.json
   def confirm
     @user = ::User.find_by(email: params[:email])
-    authorize @user
 
     @user.confirm(params[:confirmation_token])
 
@@ -48,8 +47,7 @@ class Credible::Authentication::UsersController < Credible::AuthenticationContro
   # POST /users/reset_password
   # POST /users/reset_password.json
   def reset_password
-    @user = ::User.find_by(email: permitted_attributes(User)[:email])
-    authorize @user
+    @user = ::User.find_by(email: user_params[:email])
 
     @user.reset_password
 
@@ -68,7 +66,7 @@ class Credible::Authentication::UsersController < Credible::AuthenticationContro
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    if @user.update(permitted_attributes(@user))
+    if @user.update(user_params)
       render :show, status: :ok, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -86,6 +84,9 @@ class Credible::Authentication::UsersController < Credible::AuthenticationContro
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = current_user
-      authorize @user
-    end  
+    end
+
+    def user_params
+      params.require(:user).permit(:email, :password)
+    end
 end

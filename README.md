@@ -35,11 +35,11 @@ Rails.application.routes.draw do
 end
 ```
 
-And in your Application Controller, inherit from `Credible::ApplicationController`:
+And in your Application Controller, inherit from `Credible::ControllerConcern`:
 
 ```ruby
 class ApplicationController < ActionController::Base
-  include Credible::ApplicationController
+  include Credible::ControllerConcern
 end
 ```
 

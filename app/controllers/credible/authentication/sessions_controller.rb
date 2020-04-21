@@ -2,7 +2,9 @@ class Credible::Authentication::SessionsController < Credible::AuthenticationCon
   before_action :set_session, only: [:show, :destroy]
 
   skip_before_action :authenticate!, only: [:new, :create, :fail]
-  skip_after_action :verify_authorized, only: [:fail]
+
+  # skip_after_action :verify_authorized, only: [:fail]
+  # TODO: Reevaluate authorization without Pundit
 
   # GET /sessions
   # GET /sessions.json
@@ -17,14 +19,12 @@ class Credible::Authentication::SessionsController < Credible::AuthenticationCon
   # GET /sessions/new
   def new
     @session = ::Session.new
-    authorize @session
   end
 
   # POST /sessions
   # POST /sessions.json
   def create
-    @session = ::Session.authenticate(permitted_attributes(Session))
-    authorize @session
+    @session = ::Session.authenticate(session_params)
 
     if @session.save
       render :show, status: :created, location: @session
@@ -51,6 +51,9 @@ class Credible::Authentication::SessionsController < Credible::AuthenticationCon
     # Use callbacks to share common setup or constraints between actions.
     def set_session
       @session = current_session
-      authorize @session
+    end
+
+    def session_params
+      params.require(:session).permit(:login, :password)
     end
 end
