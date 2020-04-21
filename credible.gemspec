@@ -19,7 +19,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", "~> 6.0.2", ">= 6.0.2.2"
   spec.add_dependency "warden", "~> 1.2.8"
-  spec.add_dependency "pundit", "~> 2.1.0"
 
   spec.add_development_dependency "pg"
   spec.add_development_dependency "rspec-rails", "~> 4.0.0.beta3"
