@@ -1,6 +1,6 @@
 class Credible::Authentication::UserPolicy < Credible::AuthenticationPolicy
   def permitted_attributes
-    [:name, :email, :password]
+    [:email, :password]
   end
 
   def confirm?
