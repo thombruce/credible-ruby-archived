@@ -1,4 +1,4 @@
-class Credible::ResetPasswordMailer < Credible::ApplicationMailer
+class Credible::ResetPasswordMailer < Credible::MailerBase
   def reset_password_email
     @app_name = Rails.application.class.module_parent_name
     @user = params[:user]

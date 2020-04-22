@@ -1,4 +1,4 @@
-class Credible::InvitationMailer < Credible::ApplicationMailer
+class Credible::InvitationMailer < Credible::MailerBase
   def invitation_email
     @app_name = Rails.application.class.module_parent_name
     @user = params[:user]

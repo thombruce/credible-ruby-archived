@@ -1,4 +1,4 @@
-class Credible::ConfirmationMailer < Credible::ApplicationMailer
+class Credible::ConfirmationMailer < Credible::MailerBase
   def confirmation_email
     @app_name = Rails.application.class.module_parent_name
     @user = params[:user]
