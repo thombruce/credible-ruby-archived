@@ -81,6 +81,12 @@ To user Credible's in-built mailers, you must set a hostname for your applicatio
 config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 ```
 
+Your app will also be expected to accept and properly route requests for `[root URL]/confirm/[confirmation token]?email=[email]`. The `confirmation_token` and `email` params should be sent with an AJAX request to the Credible auth route.
+
+For example, if you have Credible mounted as `mount Credible::Engine => "/auth"`, you would make a get request to `/auth/confirm/[confirmation token]?email=[email]`.
+
+_This is a little complicated and not very user friendly. A future version will provide an engine_name to assist with Rails' URL helpers, as well as an in-built UI for handling these requests on your behalf._
+
 ## Contributing
 
 Credible is not yet accepting contributions. Watch this space.
