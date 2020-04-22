@@ -7,7 +7,7 @@ Credible::Engine.routes.draw do
     # /auth/signup.json
     post 'signup', to: 'users#create'
     # /auth/confirm.json
-    get 'confirm/:confirmation_token', to: 'users#confirm', as: :confirm
+    get 'confirm/:confirmation_token', to: 'users#confirm', as: :confirmation
     # /auth/signout.json
     delete 'signout', to: 'sessions#destroy'
 
