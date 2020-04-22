@@ -1,0 +1,11 @@
+<h1>
+  <%= "Welcome to #{@app_name}, #{@user.email}" %>
+</h1>
+<p>
+  <%= "You have successfully signed up to #{@app_name}, your username is: #{@user.email}." %>
+  <br/>
+</p>
+<p>
+  To confirm your account, please follow this link: <%= link_to @confirmation_url, @confirmation_url %>
+</p>
+<p>Thanks for joining and have a great day!</p>

@@ -1,0 +1,8 @@
+<h1>
+  <%= "You have been invited to #{@app_name}" %>
+</h1>
+<p>
+  To confirm your account, please follow this link:
+  <%= link_to @invitation_url, @invitation_url %>
+</p>
+<p>We look forward to having you!</p>
