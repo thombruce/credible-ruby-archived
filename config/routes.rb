@@ -1,5 +1,5 @@
 Credible::Engine.routes.draw do
-  scope module: 'authentication', format: false, defaults: { format: 'json' } do
+  scope format: false, defaults: { format: 'json' } do
     # /auth/login.json
     post 'login', to: 'sessions#create'
     # /auth/reset_password.json

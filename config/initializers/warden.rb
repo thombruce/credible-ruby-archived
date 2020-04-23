@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use Warden::Manager do |config|
-  config.failure_app = ->(env) { Credible::Authentication::SessionsController.action(:fail).call(env) }
+  config.failure_app = ->(env) { Credible::SessionsController.action(:fail).call(env) }
 
   config.default_scope = :session
 

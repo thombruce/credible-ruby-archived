@@ -1,4 +1,4 @@
-class Credible::Authentication::SessionsController < Credible::AuthenticationController
+class Credible::SessionsController < ApplicationController
   before_action :set_session, only: [:show, :destroy]
 
   skip_before_action :authenticate!, only: [:new, :create, :fail]

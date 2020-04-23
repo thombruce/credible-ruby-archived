@@ -1,4 +1,4 @@
-class Credible::Authentication::UsersController < Credible::AuthenticationController
+class Credible::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   skip_before_action :authenticate!, only: [:new, :create, :confirm]
