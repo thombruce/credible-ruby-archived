@@ -1,5 +1,7 @@
 # Credible
 
+**Credible** | [Demo Repo](https://github.com/thombruce/credible-demo) | [Helvellyn](https://github.com/thombruce/helvellyn)
+
 [![Become a Patron](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/thombruce)
 
 [![Gem](https://img.shields.io/gem/v/credible?logo=rubygems)](https://rubygems.org/gems/credible)
