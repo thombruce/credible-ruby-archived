@@ -1,20 +1,20 @@
-# Credible
+<h1 id="credible" align="center">Credible</h1>
 
-**Credible** | [Demo Repo](https://github.com/thombruce/credible-demo) | [Helvellyn](https://github.com/thombruce/helvellyn)
+<p align="center"><strong>Credible</strong> | <a href="https://github.com/thombruce/credible-demo">Demo Repo</a> | <a href="https://github.com/thombruce/helvellyn">Helvellyn</a></p>
 
-[![Become a Patron](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/thombruce)
+<p align="center"><a href="https://www.patreon.com/thombruce"><img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Become a Patron"></a></p>
 
-[![Gem](https://img.shields.io/gem/v/credible?logo=rubygems)](https://rubygems.org/gems/credible)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thombruce/credible/CI?logo=github)](https://github.com/thombruce/credible/actions)
-[![Codecov](https://img.shields.io/codecov/c/github/thombruce/credible?logo=codecov)](https://codecov.io/gh/thombruce/credible)
-[![GitHub issues](https://img.shields.io/github/issues-raw/thombruce/credible?logo=github)](https://github.com/thombruce/credible/issues)
+<p align="center"><a href="https://rubygems.org/gems/credible"><img src="https://img.shields.io/gem/v/credible?logo=rubygems" alt="Gem"></a>
+<a href="https://github.com/thombruce/credible/actions"><img src="https://img.shields.io/github/workflow/status/thombruce/credible/CI?logo=github" alt="GitHub Workflow Status"></a>
+<a href="https://codecov.io/gh/thombruce/credible"><img src="https://img.shields.io/codecov/c/github/thombruce/credible?logo=codecov" alt="Codecov"></a>
+<a href="https://github.com/thombruce/credible/issues"><img src="https://img.shields.io/github/issues-raw/thombruce/credible?logo=github" alt="GitHub issues"></a></p>
 
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](MIT-LICENSE)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
-[![Contributing](https://img.shields.io/badge/contributions-welcome-blue.svg)](CONTRIBUTING.md)
-[![Discord](https://img.shields.io/discord/697123984231366716?color=7289da&label=chat&logo=discord)](https://discord.gg/YMU87db)
+<p align="center"><a href="MIT-LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
+<a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg" alt="Contributor Covenant"></a>
+<a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/contributions-welcome-blue.svg" alt="Contributing"></a>
+<a href="https://discord.gg/YMU87db"><img src="https://img.shields.io/discord/697123984231366716?color=7289da&amp;label=chat&amp;logo=discord" alt="Discord"></a></p>
 
-Credible was extracted from [thombruce/helvellyn](https://github.com/thombruce/helvellyn) and is still a work in progress. The goal is to provide JWT and API token based authentication using [Warden](https://github.com/wardencommunity/warden/) for Rails API applications.
+<p align="center">Credible was extracted from <a href="https://github.com/thombruce/helvellyn">thombruce/helvellyn</a> and is still a work in progress. The goal is to provide JWT and API token based authentication using <a href="https://github.com/wardencommunity/warden/">Warden</a> for Rails API applications.</p>
 
 ## Installation
 
