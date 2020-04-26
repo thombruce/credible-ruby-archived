@@ -12,7 +12,9 @@ module Credible
       def jwt
         payload = {
           data: jwt_data,
-          iss: Rails.application.class.module_parent_name
+          iss: Rails.application.class.module_parent_name,
+          iat: Time.now.to_i,
+          exp: Time.now.to_i + 4 * 3600
         }
         JWT.encode payload, Rails.application.secrets.secret_key_base, 'HS256' # [1]
       end
