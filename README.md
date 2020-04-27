@@ -10,9 +10,11 @@
 <a href="https://github.com/thombruce/credible/issues"><img src="https://img.shields.io/github/issues-raw/thombruce/credible?logo=github" alt="GitHub issues"></a></p>
 
 <p align="center"><a href="MIT-LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
-<a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg" alt="Contributor Covenant"></a>
 <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/contributions-welcome-blue.svg" alt="Contributing"></a>
 <a href="https://discord.gg/YMU87db"><img src="https://img.shields.io/discord/697123984231366716?color=7289da&label=chat&logo=discord" alt="Discord"></a></p>
+
+<p align="center"><a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Keep%20a%20Changelog-v1.1.0%20adopted-red.svg" alt="Changelog"></a>
+<a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg" alt="Contributor Covenant"></a></p>
 
 <p align="center">Credible was extracted from <a href="https://github.com/thombruce/helvellyn">thombruce/helvellyn</a> and is still a work in progress. The goal is to provide JWT and API token based authentication using <a href="https://github.com/wardencommunity/warden/">Warden</a> for Rails API applications.</p>
 
