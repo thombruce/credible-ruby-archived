@@ -26,7 +26,8 @@ Warden::Strategies.add(:jwt) do
       token =
         JWT.decode jwt, Rails.application.secrets.secret_key_base, true,
                    iss: Rails.application.class.module_parent_name, 
-                   verify_iss: true, verify_iat: true, algorithm: 'HS256' # [1]
+                   verify_iss: true, verify_iat: true, verify_expiration: true,
+                   algorithm: 'HS256' # [1]
     rescue JWT::InvalidIssuerError, JWT::InvalidIatError, JWT::ExpiredSignature
       fail!('Could not authenticate')
     end
