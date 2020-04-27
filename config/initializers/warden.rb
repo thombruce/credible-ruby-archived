@@ -34,7 +34,7 @@ Warden::Strategies.add(:jwt) do
 
     session = ::Session.find(token[0]['data']['session_id'])
     success!(session)
-  rescue ActiveRecord::RecordNotFound
+  rescue # ActiveRecord::RecordNotFound
     fail!('Could not authenticate')
   end
 
