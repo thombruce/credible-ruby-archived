@@ -20,6 +20,17 @@ module Credible
       end
     end
 
+    def refresh_token
+      payload = {
+        data: refresh_jwt_data,
+        iss: Rails.application.class.module_parent_name,
+        iat: Time.now.to_i,
+        exp: Time.now.to_i + 14 * 24 * 3600
+      }
+      JWT.encode payload, Rails.application.secrets.secret_key_base, 'HS256' # [1]
+    end
+  end
+
     class_methods do
       def authenticate(params)
         user = ::User.authenticate(params)
@@ -37,6 +48,12 @@ module Credible
           id: user.id,
           email: user.email
         }
+      }
+    end
+
+    def refresh_token_data
+      {
+        session_id: id
       }
     end
   end
