@@ -43,6 +43,38 @@ Warden::Strategies.add(:jwt) do
   end
 end
 
+Warden::Strategies.add(:refresh) do
+  def valid?
+    params[:refresh_token]
+  end
+
+  def env
+    request.env
+  end
+
+  def authenticate!
+    begin
+      jwt = params[:refresh_token]
+      token =
+        JWT.decode jwt, Rails.application.secrets.secret_key_base, true,
+                   iss: Rails.application.class.module_parent_name, 
+                   verify_iss: true, verify_iat: true, verify_expiration: true,
+                   algorithm: 'HS256' # [1]
+    rescue JWT::InvalidIssuerError, JWT::InvalidIatError, JWT::ExpiredSignature
+      fail!('Could not authenticate')
+    end
+
+    session = ::Session.find(token[0]['data']['session_id'])
+    success!(session)
+  rescue # ActiveRecord::RecordNotFound
+    fail!('Could not authenticate')
+  end
+
+  def store?
+    false
+  end
+end
+
 Warden::Strategies.add(:api_token) do
   def valid?
     request.env['HTTP_API_TOKEN']

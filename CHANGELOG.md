@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Created CHANGELOG.md to track changes
 - Add IAT and EXP to JWT and verify in Warden
 - Create and issue refresh token with authenticated session
+- Add refresh strategy and action for regenerating the Session upon request
 
 ### Fixed
 
