@@ -9,9 +9,9 @@ module Credible
 
       has_secure_token
 
-      def jwt
+      def access_token
         payload = {
-          data: jwt_data,
+          data: access_token_data,
           iss: Rails.application.class.module_parent_name,
           iat: Time.now.to_i,
           exp: Time.now.to_i + 4 * 3600
@@ -21,7 +21,7 @@ module Credible
 
       def refresh_token
         payload = {
-          data: refresh_jwt_data,
+          data: refresh_token_data,
           iss: Rails.application.class.module_parent_name,
           iat: Time.now.to_i,
           exp: Time.now.to_i + 14 * 24 * 3600
@@ -39,7 +39,7 @@ module Credible
 
     private
 
-    def jwt_data
+    def access_token_data
       {
         session_id: id,
         user_id: user.id,

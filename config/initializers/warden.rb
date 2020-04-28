@@ -9,6 +9,7 @@ end
 # TODO: See here for how Devise initializes Warden: https://github.com/heartcombo/devise/blob/715192a7709a4c02127afb067e66230061b82cf2/lib/devise/rails.rb
 #       It's also worth perusing the mention of 'warden' in the Devise repo. Interesting strategies at work.
 
+# TODO: Change to :access_token, maybe maintain :jwt as alias
 Warden::Strategies.add(:jwt) do
   def valid?
     env['HTTP_AUTHORIZATION']
