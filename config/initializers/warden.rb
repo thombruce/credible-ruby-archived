@@ -3,7 +3,7 @@ Rails.application.config.middleware.use Warden::Manager do |config|
 
   config.default_scope = :session
 
-  config.scope_defaults :session, store: false, strategies: [:jwt, :api_token]
+  config.scope_defaults :session, store: false, strategies: [:jwt, :refresh, :api_token]
 end
 
 # TODO: See here for how Devise initializes Warden: https://github.com/heartcombo/devise/blob/715192a7709a4c02127afb067e66230061b82cf2/lib/devise/rails.rb
@@ -46,7 +46,8 @@ end
 
 Warden::Strategies.add(:refresh) do
   def valid?
-    params[:refresh_token]
+    # params[:refresh_token]
+    env['action_dispatch.request.parameters']['refresh_token'] # https://github.com/wardencommunity/warden/issues/84
   end
 
   def env
@@ -55,7 +56,7 @@ Warden::Strategies.add(:refresh) do
 
   def authenticate!
     begin
-      jwt = params[:refresh_token]
+      jwt = env['action_dispatch.request.parameters']['refresh_token']
       token =
         JWT.decode jwt, Rails.application.secrets.secret_key_base, true,
                    iss: Rails.application.class.module_parent_name, 
