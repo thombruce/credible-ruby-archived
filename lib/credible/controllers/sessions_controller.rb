@@ -5,7 +5,8 @@ module Credible
 
       included do
         before_action :set_session, only: [:show, :destroy]
-        skip_before_action :authenticate!, only: [:new, :create, :fail]
+        skip_before_action :authenticate!, only: [:new, :create, :refresh, :fail]
+        before_action :authenticate_with_refresh_token!, only: [:refresh]
         # skip_after_action :verify_authorized, only: [:fail]
         # TODO: Reevaluate authorization without Pundit
       end
@@ -37,6 +38,19 @@ module Credible
         end
       end
 
+      # POST /refresh
+      # POST /refresh.json
+      def refresh
+        @session = ::Session.new(user: current_user)
+
+        if @session.save
+          current_session.destroy
+          render :show, status: :created, location: @session
+        else
+          render json: @session.errors, status: :unprocessable_entity
+        end
+      end
+
       # DELETE /sessions/1
       # DELETE /sessions/1.json
       # DELETE /sessions/current
@@ -59,6 +73,10 @@ module Credible
 
       def session_params
         params.require(:session).permit(:login, :password)
+      end
+
+      def authenticate_with_refresh_token!
+        warden.authenticate!(:refresh)
       end
     end
   end

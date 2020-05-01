@@ -9,12 +9,22 @@ module Credible
 
       has_secure_token
 
-      def jwt
+      def access_token
         payload = {
-          data: jwt_data,
+          data: access_token_data,
           iss: Rails.application.class.module_parent_name,
           iat: Time.now.to_i,
           exp: Time.now.to_i + 4 * 3600
+        }
+        JWT.encode payload, Rails.application.secrets.secret_key_base, 'HS256' # [1]
+      end
+
+      def refresh_token
+        payload = {
+          data: refresh_token_data,
+          iss: Rails.application.class.module_parent_name,
+          iat: Time.now.to_i,
+          exp: Time.now.to_i + 14 * 24 * 3600
         }
         JWT.encode payload, Rails.application.secrets.secret_key_base, 'HS256' # [1]
       end
@@ -29,7 +39,7 @@ module Credible
 
     private
 
-    def jwt_data
+    def access_token_data
       {
         session_id: id,
         user_id: user.id,
@@ -37,6 +47,12 @@ module Credible
           id: user.id,
           email: user.email
         }
+      }
+    end
+
+    def refresh_token_data
+      {
+        session_id: id
       }
     end
   end

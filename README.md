@@ -77,6 +77,20 @@ class Session < ApplicationRecord
 end
 ```
 
+## Calling the API
+
+To sign up and create a new user, send params in the form `{ user: { email: 'email@example.com', password: 'Pa$$word123!' } }` to `auth/signup` as a `POST` request. On success, this will return `{ access_token: '...', refresh_token: '...' }` that can be used to persist the user's session.
+
+To sign in a user, send params in the form `{ session: { login: 'email@example.com', password: 'Pa$$word123!' } }` to `auth/login` as a `POST` request. On success, this will return `{ access_token: '...', refresh_token: '...' }` that can be used to persist the user's session.
+
+To sign out a user, send an empty request to `auth/signout` as a `DELETE` request. On success, this will return no content. It will destroy the session in the database and invalidate any existing tokens. Note: If you are using the access token to authenticate the user on a separate server, it will still remain valid until its expiry.
+
+To refresh an access token, send params in the form `{ refresh_token: '...' }` to `auth/refresh` as a `POST` request. On success, this will return `{ access_token: '...', refresh_token: '...' }` that can be used to continue the user's session. Note: This will also invalidate the refresh token used to renew the tokens, and provide a new refresh token for next use.
+
+> **Be careful**
+>
+> Credible is still a work in progress and these routes will be subject to change. I'm thinking about keeping them around as sort of a "classic" mode, but I feel like more resource-oriented routes are also desirable. For example, I want to add a `/tokens` endpoint in place of the existing `/refresh` enpoint, because _refresh what?_ It's just more semantically correct.
+
 ## Mailers
 
 To user Credible's in-built mailers, you must set a hostname for your application. A suitable setting for this in `config/environments/development.rb` might be:

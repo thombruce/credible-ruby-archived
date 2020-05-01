@@ -9,10 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Created CHANGELOG.md to track changes
 - Add IAT and EXP to JWT and verify in Warden
+- Create and issue refresh token with authenticated session
+- Add refresh strategy and action for regenerating the Session upon request
+- Document API endpoints in the README
+
+### Changed
+
+- Changed jwt to access_token on model and views for user and session
 
 ### Fixed
 
 - Fix 500 server error on failed JWT decode by rescuing all StandardError errors
+
+### Deprecated
+
+- JSON response will return :access_token alongside :jwt, deprecating :jwt
 
 ## [0.11.0]
 
